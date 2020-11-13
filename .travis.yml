@@ -1,0 +1,26 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t x78240/react-test -f ./client/Dockerfile.dev ./client
+
+script: 
+ - docker run -e CI=true x78240/react-test npm test
+
+after_success:
+  - docker build -t  ./client
+  - docker build -t x78240/multi-nginx ./nginx
+  - docker build -t x78240/multi-server ./server
+  - docker build -t x78240/multi-worker ./worker
+    
+#login to docker cli
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# push to docker hub
+  - docker push x78240/multi-client
+  - docker push x78240/multi-nginx
+  - docker push x78240/multi-server
+  - docker push x78240/multi-worker
+  
