@@ -1,6 +1,6 @@
 {
     "AWSEBDockerrunVersion": 2,
-    "containerDefinitions":[
+    "containerDefinitions": [
         {
             "name": "client",
             "image": "x78240/multi-client",
@@ -24,7 +24,7 @@
             "image": "x78240/multi-nginx",
             "hostname": "nginx",
             "essential": true,
-            "portMappings":[
+            "portMappings": [
                 {
                     "hostPort": 80,
                     "containerPort": 80
