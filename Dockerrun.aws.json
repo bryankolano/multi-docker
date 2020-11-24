@@ -17,7 +17,7 @@
         },
         {
             "name": "worker",
-            "iamge": "x78240/multi-worker",
+            "image": "x78240/multi-worker",
             "hostname": "worker",
             "essential": false,
             "memory": 128
